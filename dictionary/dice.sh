@@ -58,30 +58,39 @@ echo "${dice_number[@]}"
 echo "${!dice_count[@]}"
 echo "${dice_count[@]}"
 
-
 max=${dice_count[1]};
 max_key=1;
-for key in "${dice_count[@]}"
+i=1;
+for key in "${!dice_count[@]}"
 do
-	a=$(($key+1));
-	if [ $max -le ${dice_count[$a]} ];
+	if [ $i -lt 6 ];
 	then
-		max_key=$key;
-		max=${dice_count[$a]};
+		a=$(($key+1));
+		if [ $max -le ${dice_count[$a]} ];
+		then
+			max_key=$a;
+			max=${dice_count[$a]};
+		fi
 	fi
+	i=$(($i+1));
 done
 echo "Number which reached maximum times-->$max_key";
 
 
 min=${dice_count[1]};
 min_key=1;
-for key in "${dice_count[@]}"
+j=1
+for key in "${!dice_count[@]}"
 do
-	a=$(($key+1));
-	if [ $min -le ${dice_count[$a]} ];
+	if [ $j -lt 6 ];
 	then
-		min_key=$key;
-		min=${dice_count[$a]};
+		a=$(($key+1));
+		if [ $min -ge ${dice_count[$a]} ];
+		then
+			min_key=$a;
+			min=${dice_count[$a]};
+		fi
 	fi
+	j=$(($j+1));
 done
 echo "Number which reached Minimum times-->$min_key";
