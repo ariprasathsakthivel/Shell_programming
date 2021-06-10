@@ -7,7 +7,7 @@ y=999; #upper limit
 diff=$(($y-$x+1));
 for ((i=0; i<10; i++))
 do
-	a[i]=$(($(($RANDOM%diff))+x));
+	a[$i]=$(($(($RANDOM%diff))+x));
 done
 
 #finding the maximum number in the array
@@ -45,7 +45,7 @@ do
 		continue;
 	elif [ $ele -ne $max -o $ele -ne $min ];
 	then
-		new_array[i]=$ele;
+		new_array[$i]=$ele;
 		i=$(($i+1));
 	fi
 done
